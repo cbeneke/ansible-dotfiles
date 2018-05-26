@@ -1,0 +1,9 @@
+---
+
+- name: pacman | install vim
+  pacman:
+    pkg: "{{ vim_package }}"
+    state: installed
+  tags:
+  - vim
+

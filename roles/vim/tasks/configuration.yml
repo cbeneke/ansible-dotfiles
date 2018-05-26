@@ -1,0 +1,76 @@
+---
+
+- name: file | ensure config directories
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+  - "{{ vim_config_dir }}"
+  - "{{ vim_config_dir }}/bundle"
+  - "{{ vim_config_dir }}/colors"
+  - "{{ vim_config_dir }}/gits"
+  tags:
+  - vim
+  - config
+
+- name: git | get pathogen
+  git:
+    repo: https://github.com/tpope/vim-pathogen.git
+    dest: "{{ vim_config_dir }}/gits/pathogen"
+  tags:
+  - vim
+  - config
+
+- name: file | install pathogen
+  file:
+    src: "{{ vim_config_dir }}/gits/pathogen/autoload"
+    dest: "{{ vim_config_dir }}/autoload"
+    state: link
+  tags:
+  - vim
+  - config
+
+- name: git | get bundles
+  git:
+    repo: "{{ item.repo }}"
+    dest: "{{ vim_config_dir }}/bundle/{{ item.name }}"
+  with_items:
+  - name: tabular
+    repo: https://github.com/godlygeek/tabular.git
+  - name: gitgutter
+    repo: https://github.com/airblade/vim-gitgutter.git
+  - name: sensible
+    repo: https://github.com/tpope/vim-sensible.git
+  tags:
+  - vim
+  - config
+
+- name: git | get colors
+  git:
+    repo: "{{ item.repo }}"
+    dest: "{{ vim_config_dir }}/gits/{{ item.name }}"
+  with_items:
+  - name: vividchalk
+    repo: https://github.com/tpope/vim-vividchalk.git
+  tags:
+  - vim
+  - config
+
+- name: file | link colors
+  file:
+    src: "{{ vim_config_dir }}/gits/{{ item }}/colors/{{ item }}.vim"
+    dest: "{{ vim_config_dir }}/colors/{{ item }}.vim"
+    state: link
+  with_items:
+  - vividchalk
+  tags:
+  - vim
+  - config
+
+- name: template | install vimrc
+  template:
+    src: vimrc.j2
+    dest: "{{ vim_vimrc }}"
+  tags:
+  - vim
+  - config
