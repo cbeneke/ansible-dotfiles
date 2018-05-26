@@ -1,0 +1,8 @@
+---
+
+- name: pacman | install go
+  pacman:
+    pkg: go
+    state: installed
+  tags:
+  - golang

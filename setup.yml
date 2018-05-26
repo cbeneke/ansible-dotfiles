@@ -9,3 +9,8 @@
       state: link
   roles:
   - vim
+
+- import_playbook: playbooks/workstation.yml
+  when: "types is defined and 'workstation' in types"
+- import_playbook: playbooks/desktop.yml
+  when: "types is defined and 'desktop' in types"

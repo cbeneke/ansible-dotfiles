@@ -1,0 +1,6 @@
+---
+
+- name: file | ensure GOPATH directory
+  file:
+    dest: "{{ golang_gopath }}"
+    state: directory
