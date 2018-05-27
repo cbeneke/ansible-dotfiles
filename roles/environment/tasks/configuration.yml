@@ -10,11 +10,7 @@
   - environment
   - config
 
-- name: copy | ensure global env variables
-  copy:
+- name: template | ensure global env variables
+  template:
+    src: environment.j2
     dest: "{{ env_dir }}/profile.d/global.sh"
-    content: |
-      #!/usr/local/env bash
-      # {{ ansible_managed }}
-
-      export PATH="$PATH:{{ env_dir }}/bin"
