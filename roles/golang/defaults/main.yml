@@ -1,1 +1,1 @@
-golang_gopath: "{{ ansible_user_dir }}/go"
+golang_gopath: "{{ development_dir }}/go"

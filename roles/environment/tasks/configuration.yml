@@ -6,6 +6,7 @@
   - "{{ env_dir }}"
   - "{{ env_dir }}/bin"
   - "{{ env_dir }}/profile.d"
+  - "{{ development_dir }}"
   tags:
   - environment
   - config
