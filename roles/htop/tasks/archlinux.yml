@@ -1,0 +1,6 @@
+- name: pacman | install htop
+  pacman:
+    pkg: htop
+    state: installed
+  tags:
+  - htop

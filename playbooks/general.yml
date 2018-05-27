@@ -2,3 +2,4 @@
   roles:
   - environment
   - vim
+  - htop
