@@ -8,3 +8,13 @@
   tags:
   - golang
   - config
+
+- name: copy | ensure golang env variables
+  copy:
+    dest: "{{ env_dir }}/profile.d/golang.sh"
+    content: |
+      #!/usr/local/env bash
+      # {{ ansible_managed }}
+
+      export PATH="$PATH:{{ golang_gopath }}/bin"
+      export GOPATH="{{ golang_gopath }}"

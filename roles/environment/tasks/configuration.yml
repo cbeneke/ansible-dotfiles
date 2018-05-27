@@ -1,0 +1,20 @@
+- name: file | ensure environment directories
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+  - "{{ env_dir }}"
+  - "{{ env_dir }}/bin"
+  - "{{ env_dir }}/profile.d"
+  tags:
+  - environment
+  - config
+
+- name: copy | ensure global env variables
+  copy:
+    dest: "{{ env_dir }}/profile.d/global.sh"
+    content: |
+      #!/usr/local/env bash
+      # {{ ansible_managed }}
+
+      export PATH="$PATH:{{ env_dir }}/bin"
