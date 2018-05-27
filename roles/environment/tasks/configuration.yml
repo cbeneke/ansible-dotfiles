@@ -5,6 +5,7 @@
   with_items:
   - "{{ env_dir }}"
   - "{{ env_dir }}/bin"
+  - "{{ env_dir }}/git"
   - "{{ env_dir }}/profile.d"
   - "{{ development_dir }}"
   tags:

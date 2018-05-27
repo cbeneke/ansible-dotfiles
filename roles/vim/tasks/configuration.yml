@@ -6,7 +6,6 @@
   - "{{ vim_config_dir }}"
   - "{{ vim_config_dir }}/bundle"
   - "{{ vim_config_dir }}/colors"
-  - "{{ vim_config_dir }}/gits"
   tags:
   - vim
   - config
@@ -14,14 +13,14 @@
 - name: git | get pathogen
   git:
     repo: https://github.com/tpope/vim-pathogen.git
-    dest: "{{ vim_config_dir }}/gits/pathogen"
+    dest: "{{ env_dir }}/git/vim-pathogen"
   tags:
   - vim
   - config
 
 - name: file | install pathogen
   file:
-    src: "{{ vim_config_dir }}/gits/pathogen/autoload"
+    src: "{{ env_dir }}/git/vim-pathogen/autoload"
     dest: "{{ vim_config_dir }}/autoload"
     state: link
   tags:
@@ -46,7 +45,7 @@
 - name: git | get colors
   git:
     repo: "{{ item.repo }}"
-    dest: "{{ vim_config_dir }}/gits/{{ item.name }}"
+    dest: "{{ env_dir }}/git/vim-{{ item.name }}"
   with_items:
   - name: vividchalk
     repo: https://github.com/tpope/vim-vividchalk.git
@@ -56,7 +55,7 @@
 
 - name: file | link colors
   file:
-    src: "{{ vim_config_dir }}/gits/{{ item }}/colors/{{ item }}.vim"
+    src: "{{ env_dir }}/git/vim-{{ item }}/colors/{{ item }}.vim"
     dest: "{{ vim_config_dir }}/colors/{{ item }}.vim"
     state: link
   with_items:
