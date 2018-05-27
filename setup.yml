@@ -1,16 +1,9 @@
 ---
 
-- hosts: localhost
-  pre_tasks:
-  - name: link hostname variables
-    file:
-      src: "{{ playbook_dir }}/host_vars/{{ ansible_hostname }}"
-      dest: "{{ playbook_dir }}/host_vars/localhost"
-      state: link
-  roles:
-  - vim
+- import_playbook: playbooks/general.yml
 
 - import_playbook: playbooks/workstation.yml
   when: "types is defined and 'workstation' in types"
+
 - import_playbook: playbooks/desktop.yml
   when: "types is defined and 'desktop' in types"

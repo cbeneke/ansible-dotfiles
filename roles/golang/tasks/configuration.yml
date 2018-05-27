@@ -1,6 +1,12 @@
 ---
 
-- name: file | ensure GOPATH directory
+- name: file | ensure go directories
   file:
-    dest: "{{ golang_gopath }}"
+    dest: "{{ item }}"
     state: directory
+  with_items:
+  - "{{ golang_gopath }}"
+  - "{{ golang_gopath }}/src"
+  tags:
+  - golang
+  - config
