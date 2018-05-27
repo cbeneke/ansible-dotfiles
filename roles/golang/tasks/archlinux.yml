@@ -1,4 +1,5 @@
 - name: pacman | install go
+  become: True
   pacman:
     pkg: go
     state: installed

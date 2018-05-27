@@ -1,4 +1,5 @@
 - name: pacman | install vim
+  become: True
   pacman:
     pkg: "{{ vim_package }}"
     state: installed

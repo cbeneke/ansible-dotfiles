@@ -1,4 +1,5 @@
 - name: pacman | install basic toolset
+  become: True
   pacman:
     pkg: "{{ item }}"
     state: installed
