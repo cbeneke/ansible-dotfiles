@@ -1,4 +1,4 @@
 vim_package: neovim
-vim_config_dir: "{{ lookup( 'env', 'HOME') }}/.config/nvim"
+vim_config_dir: "{{ ansible_user_dir }}/.config/nvim"
 vim_vimrc: "{{ vim_config_dir }}/init.vim"
 vim_indentation: 4

@@ -1,1 +1,1 @@
-golang_gopath: "{{ lookup('env', 'HOME') }}/go"
+golang_gopath: "{{ ansible_user_dir }}/go"
