@@ -1,0 +1,1 @@
+golang_gopath: "{{ lookup('env', 'HOME') }}/development/go"
