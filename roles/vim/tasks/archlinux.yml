@@ -4,4 +4,4 @@
     state: installed
   tags:
   - vim
-
+  - packages

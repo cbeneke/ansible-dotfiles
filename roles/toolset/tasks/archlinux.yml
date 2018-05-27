@@ -1,0 +1,16 @@
+- name: pacman | install basic toolset
+  pacman:
+    pkg: "{{ item }}"
+    state: installed
+  with_items:
+  - htop
+  - lm_sensors
+  - lshw
+  - nmap
+  - python
+  - python2
+  - unzip
+  - zip
+  tags:
+  - toolset
+  - packages

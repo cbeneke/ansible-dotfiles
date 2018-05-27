@@ -4,3 +4,4 @@
     state: installed
   tags:
   - golang
+  - packages
