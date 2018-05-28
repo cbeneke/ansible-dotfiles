@@ -1,0 +1,8 @@
+- name: pacman | install vim
+  become: True
+  pacman:
+    pkg: zsh
+    state: installed
+  tags:
+  - zsh
+  - packages
