@@ -4,6 +4,7 @@
     pkg: "{{ item }}"
     state: installed
   with_items:
+  - python-virtualenvwrapper
   - zsh
   - zsh-completions
   tags:
