@@ -1,6 +1,6 @@
 ---
 
-# Setup symlink to current host
+# Setup symlink to current host and prepare environment
 - hosts: localhost
   pre_tasks:
   - name: link hostname variables
@@ -8,6 +8,8 @@
       src: "{{ playbook_dir }}/host_vars/{{ ansible_hostname }}"
       dest: "{{ playbook_dir }}/host_vars/localhost"
       state: link
+  roles:
+  - environment
 
 - import_playbook: playbooks/general.yml
 
