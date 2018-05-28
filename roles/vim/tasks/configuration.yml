@@ -66,8 +66,14 @@
 
 - name: template | install vimrc
   template:
-    src: vimrc.j2
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  with_items:
+  - src: vimrc.j2
     dest: "{{ vim_vimrc }}"
+  - src: vimpagerrc.j2
+    dest: "{{ vim_vimpagerrc }}"
+
   tags:
   - vim
   - config
