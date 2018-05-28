@@ -12,7 +12,7 @@
     dest: "{{ env_dir }}/git/{{ item.name }}"
   with_items:
   - name: zsh-git-prompt
-    repo: https://github.com/olivierverdier/zsh-git-prompt.git
+    repo: https://github.com/sattelite/zsh-git-prompt.git
   tags:
   - zsh
   - config
