@@ -1,0 +1,50 @@
+- name: git | get workstation zsh plugins
+  git:
+    repo: "{{ item.repo }}"
+    dest: "{{ env_dir }}/git/{{ item.name }}"
+  with_items:
+  - name: kube-ps1
+    repo: https://github.com/jonmosco/kube-ps1.git
+  - name: kubectx
+    repo: https://github.com/ahmetb/kubectx.git
+  tags:
+  - zsh
+  - config
+
+- name: file | link kubectx binaries and lib
+  file:
+    src: "{{ env_dir }}/git/kubectx/{{ item.src }}"
+    dest: "{{ env_dir }}/bin/{{ item.dest }}"
+    state: link
+  with_items:
+  - src: kubectx
+    dest: kctx
+  - src: kubens
+    dest: kns
+
+- name: file | disable kube-ps1 per default
+  file:
+    name: "{{ item.name }}"
+    state: "{{ item.state }}"
+  with_items:
+  - name: "{{ ansible_user_dir }}/.kube"
+    state: directory
+  - name: "{{ ansible_user_dir }}/.kube/kube-ps1"
+    state: directory
+  - name: "{{ ansible_user_dir }}/.kube/kube-ps1/disabled"
+    state: touch
+  when: zsh_default_disable_kube_ps1
+  tags:
+  - zsh
+  - config
+
+- name: file | link kubectx autocompletion
+  file:
+    src: "{{ env_dir }}/git/kubectx/completion/{{ item.src }}"
+    dest: "{{ env_dir }}/completion.d/{{ item.dest }}"
+    state: link
+  with_items:
+    - src: kubectx.zsh
+      dest: _kctx
+    - src: kubens.zsh
+      dest: _kns

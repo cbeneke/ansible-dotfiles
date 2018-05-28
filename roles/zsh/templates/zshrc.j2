@@ -14,6 +14,14 @@ hascmd() {
 
 export fpath=({{ env_dir }}/completion.d $fpath)
 
+{% if 'working' in usage %}
+# Kube PS1
+source "{{ env_dir}}/git/kube-ps1/kube-ps1.sh"
+export KUBE_PS1_SYMBOL_ENABLE=false
+export KUBE_PS1_PREFIX=' '
+export KUBE_PS1_SUFFIX=''
+
+{% endif %}
 # include zsh-git-prompt
 [ -z ${ZSH_GIT_SH} ] && export ZSH_GIT_SH="{{ env_dir}}/git/zsh-git-prompt/zshrc.sh"
 if [ -f ${ZSH_GIT_SH} ]; then
