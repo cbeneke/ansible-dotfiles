@@ -1,0 +1,7 @@
+- name: template | configure tmux
+  template:
+    src: config.j2
+    dest: "{{ ansible_user_dir }}/.tmux.conf"
+  tags:
+  - tmux
+  - configuration

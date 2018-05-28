@@ -2,6 +2,7 @@
 
 - hosts: localhost
   roles:
+  - tmux
   - toolset
   - vim
   - zsh

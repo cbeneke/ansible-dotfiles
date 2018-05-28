@@ -1,0 +1,10 @@
+- name: pacman | install tmux
+  become: True
+  pacman:
+    pkg: "{{ item }}"
+    state: installed
+  with_items:
+  - tmux
+  tags:
+  - tmux
+  - packages
