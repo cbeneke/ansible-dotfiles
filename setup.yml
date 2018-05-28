@@ -15,3 +15,6 @@
 
 - import_playbook: playbooks/workstation.yml
   when: "usage is defined and 'working' in usage"
+
+- import_playbook: playbooks/desktop.yml
+  when: "usage is defined and 'desktop' in usage"

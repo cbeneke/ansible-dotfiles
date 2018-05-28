@@ -1,0 +1,12 @@
+- name: pacman | install i3
+  become: True
+  pacman:
+    pkg: "{{ item }}"
+    state: installed
+  with_items:
+  - feh
+  - i3-gaps
+  - i3lock
+  tags:
+  - i3
+  - packages

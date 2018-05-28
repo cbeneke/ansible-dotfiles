@@ -1,0 +1,5 @@
+# Playbook for development used machines
+
+- hosts: localhost
+  roles:
+  - i3
