@@ -1,3 +1,11 @@
+- name: template | configure zsh
+  template:
+    src: zshrc.j2
+    dest: "{{ ansible_user_dir }}/.zshrc"
+  tags:
+  - zsh
+  - config
+
 - name: git | get zsh plugins
   git:
     repo: "{{ item.repo }}"
@@ -5,14 +13,6 @@
   with_items:
   - name: zsh-git-prompt
     repo: https://github.com/olivierverdier/zsh-git-prompt.git
-  tags:
-  - zsh
-  - config
-
-- name: template | configure zsh
-  template:
-    src: zshrc.j2
-    dest: "{{ ansible_user_dir }}/.zshrc"
   tags:
   - zsh
   - config
