@@ -1,8 +1,11 @@
-- name: pacman | install vim
+- name: pacman | install zsh and plugins
   become: True
   pacman:
-    pkg: zsh
+    pkg: "{{ item }}"
     state: installed
+  with_items:
+  - zsh
+  - zsh-completions
   tags:
   - zsh
   - packages

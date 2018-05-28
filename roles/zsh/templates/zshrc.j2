@@ -12,6 +12,8 @@ hascmd() {
 # environment for external tools
 ################################################################################
 
+export fpath=({{ env_dir }}/completion.d $fpath)
+
 # include zsh-git-prompt
 [ -z ${ZSH_GIT_SH} ] && export ZSH_GIT_SH="{{ env_dir}}/git/zsh-git-prompt/zshrc.sh"
 if [ -f ${ZSH_GIT_SH} ]; then

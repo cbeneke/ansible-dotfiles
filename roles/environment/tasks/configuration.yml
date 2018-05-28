@@ -7,6 +7,7 @@
   - "{{ env_dir }}/bin"
   - "{{ env_dir }}/git"
   - "{{ env_dir }}/profile.d"
+  - "{{ env_dir }}/completion.d"
   - "{{ development_dir }}"
   tags:
   - environment
