@@ -12,4 +12,4 @@
 - import_playbook: playbooks/general.yml
 
 - import_playbook: playbooks/workstation.yml
-  when: "types is defined and 'workstation' in types"
+  when: "usage is defined and 'working' in usage"
