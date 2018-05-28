@@ -1,8 +1,8 @@
 # {{ ansible_managed }}
 
-{% if i3_wallpaper is defined %}
+{% if i3_wallpapers is defined %}
 # Set wallpaper
-exec feh --bg-scale {{ env_dir }}/wallpapers/{{ i3_wallpaper }}
+exec feh --no-fehbg --bg-fill{% for wp in i3_wallpapers %} {{ env_dir }}/wallpapers/{{ wp }}{% endfor %}
 
 {% endif %}
 # i3 config file (v4)

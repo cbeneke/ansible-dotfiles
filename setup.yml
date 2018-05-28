@@ -5,8 +5,8 @@
   pre_tasks:
   - name: link hostname variables
     file:
-      src: "{{ playbook_dir }}/host_vars/{{ ansible_hostname }}"
-      dest: "{{ playbook_dir }}/host_vars/localhost"
+      src: "{{ playbook_dir }}/host_vars/{{ ansible_hostname }}.yml"
+      dest: "{{ playbook_dir }}/host_vars/localhost.yml"
       state: link
   roles:
   - environment
