@@ -1,6 +1,5 @@
-- name: pacman | install go
-  become: True
-  pacman:
+- name: homebrew | install go
+  homebrew:
     pkg: go
     state: installed
   tags:

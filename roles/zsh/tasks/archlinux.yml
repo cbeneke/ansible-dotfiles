@@ -10,3 +10,5 @@
   tags:
   - zsh
   - packages
+
+- include_tasks: configuration.yml

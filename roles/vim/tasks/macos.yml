@@ -1,6 +1,5 @@
-- name: pacman | install vim
-  become: True
-  pacman:
+- name: homebrew | install vim
+  homebrew:
     pkg: "{{ vim_package }}"
     state: installed
   tags:

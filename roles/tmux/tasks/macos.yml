@@ -1,6 +1,5 @@
-- name: pacman | install tmux
-  become: True
-  pacman:
+- name: homebrew | install tmux
+  homebrew:
     pkg: "{{ item }}"
     state: installed
   with_items:

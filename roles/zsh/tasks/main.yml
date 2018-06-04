@@ -1,7 +1,8 @@
 - include_tasks: archlinux.yml
   when: ansible_os_family == "Archlinux"
 
+- include_tasks: macos.yml
+  when: ansible_distribution == 'MacOSX'
+
 - include_tasks: workstation.yml
   when: "usage is defined and 'working' in usage"
-
-- include_tasks: configuration.yml

@@ -16,14 +16,14 @@ export fpath=({{ env_dir }}/completion.d $fpath)
 
 {% if 'working' in usage %}
 # Kube PS1
-source "{{ env_dir}}/git/kube-ps1/kube-ps1.sh"
+source "{{ env_dir }}/git/kube-ps1/kube-ps1.sh"
 export KUBE_PS1_SYMBOL_ENABLE=false
 export KUBE_PS1_PREFIX=' '
 export KUBE_PS1_SUFFIX=''
 
 {% endif %}
 # include zsh-git-prompt
-[ -z ${ZSH_GIT_SH} ] && export ZSH_GIT_SH="{{ env_dir}}/git/zsh-git-prompt/zshrc.sh"
+[ -z ${ZSH_GIT_SH} ] && export ZSH_GIT_SH="{{ env_dir }}/git/zsh-git-prompt/zshrc.sh"
 if [ -f ${ZSH_GIT_SH} ]; then
     source ${ZSH_GIT_SH}
     ZSH_THEME_GIT_PROMPT_PREFIX=""
@@ -35,7 +35,7 @@ if [ -f ${ZSH_GIT_SH} ]; then
 fi
 
 # include virtualenvwrapper
-[ -z ${VIRTUALENVSH} ] && export VIRTUALENVSH='/usr/bin/virtualenvwrapper.sh'
+[ -z ${VIRTUALENVSH} ] && export VIRTUALENVSH='{{ zsh_virtualenvsh }}'
 if [ -f ${VIRTUALENVSH} ]; then
     [ -z ${WORKON_HOME} ] && export WORKON_HOME="${HOME}/.virtualenvs"
     source ${VIRTUALENVSH}
@@ -453,7 +453,11 @@ bindkey "^I" expand-or-complete-with-dots
 
 # Exception for ls: With --color=auto, ls emits color codes only when standard
 # output is connected to a terminal -> does not break stuff, allowed
+{% if ansible_distribution == 'MacOSX' %}
+alias ls="ls -G"
+{% else %}
 alias ls="ls --color=auto --group-directories-first"
+{% endif %}
 alias l="ls -lF"
 alias ll="l"
 alias la="ls -laF"

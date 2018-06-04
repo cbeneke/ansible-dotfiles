@@ -10,3 +10,5 @@
   tags:
   - i3
   - packages
+
+- include_tasks: configuration.yml
