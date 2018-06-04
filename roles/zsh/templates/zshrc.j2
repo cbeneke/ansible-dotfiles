@@ -78,7 +78,12 @@ export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
+# Set color scheme
+{% if ansible_distribution == 'MacOSX' %}
+export LSCOLORS='gxfxcxdxbxegedabagacad'
+{% else %}
 export LS_COLORS='di=36:ln=1;36:so=31:pi=1;31:ex=32:bd=35:cd=1;35:su=1;32;47:sg=32;47:tw=1;36;44:ow=36;44'
+{% endif %}
 
 # disable mailchecks
 export MAILCHECK=""
@@ -472,7 +477,9 @@ alias c='cd'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+{% if ansible_distribution != 'MacOSX' %}
 alias rm='rm -I'
+{% endif %}
 
 alias :q='exit'
 if hascmd nvim ; then
