@@ -572,6 +572,8 @@ for file in ${sourcedir}/*; do
     source "${file}"
 done
 
+[ -f "{{ ansible_user_dir }}/.profile.local" ] && source "{{ ansible_user_dir }}/.profile.local"
+
 # remove functions that aren't needed anymore
 unset -f bind2maps
 
