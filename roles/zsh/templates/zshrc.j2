@@ -144,9 +144,9 @@ setopt correct              # try to correct typos
 
 # exit code on the right if != 0, red username for root, green otherwise
 {% raw %}
-PROMPT='%{%B%F{white}%}%D{%H:%M}%b %(!.%B%F{red}.%F{green})%B%n [%m]%b %{%B%F{white}%}%B%d%b
+PS1='%{%B%F{white}%}%D{%H:%M}%b %(!.%B%F{red}.%F{green})%B%n [%m]%b %{%B%F{white}%}%B%d%b
 %(?..%B%F{red}%?%b%f )%(!.#.$) '
-RPROMPT='$(git_super_status)$(prompt_spacer)$(kube_ps1)'
+RPS1='$(git_super_status)$(prompt_spacer)$(kube_ps1)'
 {% endraw %}
 
 # printed when waiting for more input
