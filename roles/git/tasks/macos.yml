@@ -1,0 +1,11 @@
+- name: homebrew | install git
+  homebrew:
+    pkg: "{{ item }}"
+    state: installed
+  with_items:
+  - git
+  tags:
+  - git
+  - packages
+
+- include_tasks: configuration.yml

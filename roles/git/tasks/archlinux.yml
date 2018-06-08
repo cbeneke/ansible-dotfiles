@@ -1,0 +1,12 @@
+- name: pacman | install git
+  become: True
+  pacman:
+    pkg: "{{ item }}"
+    state: installed
+  with_items:
+  - git
+  tags:
+  - git
+  - packages
+
+- include_tasks: configuration.yml

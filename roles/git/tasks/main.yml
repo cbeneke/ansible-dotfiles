@@ -1,0 +1,5 @@
+- include_tasks: archlinux.yml
+  when: ansible_distribution == 'Archlinux'
+
+- include_tasks: macos.yml
+  when: ansible_distribution == 'MacOSX'
