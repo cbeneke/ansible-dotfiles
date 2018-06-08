@@ -5,3 +5,4 @@ usage:
 
 zsh_virtualenvsh: /usr/local/bin/virtualenvwrapper.sh
 vim_vimrc: "{{ vim_config_dir }}/sysinit.vim"
+git_email: 'c.beneke@syseleven.de'
