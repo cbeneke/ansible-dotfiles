@@ -1,0 +1,1 @@
+gopass_config_dir: "{{ ansible_user_dir }}/.config/gopass"

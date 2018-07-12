@@ -1,0 +1,25 @@
+- name: shell | install gopass
+  shell: go get -u {{ item }}
+  environment:
+    GOPATH: "{{ GOPATH }}"
+  with_items:
+    - github.com/gopasspw/gopass
+  changed_when: false
+  tags:
+    - gopass
+
+- name: file | create config dir
+  file:
+    path: "{{ gopass_config_dir }}"
+    state: directory
+  tags:
+    - gopass
+
+- name: template | configure gopass
+  template:
+    src: "{{ item }}.j2"
+    dest: "{{ gopass_config_dir }}/{{ item }}"
+  with_items:
+    - gopass_wrapper.sh
+  tags:
+    - gopass
