@@ -23,3 +23,10 @@
     - gopass_wrapper.sh
   tags:
     - gopass
+
+- name: template | create gopass autocompletion
+  template:
+    src: completion.j2
+    dest: "{{ env_dir }}/completion.d/_gopass"
+  tags:
+    - gopass
