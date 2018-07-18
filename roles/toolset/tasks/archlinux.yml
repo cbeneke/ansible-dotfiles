@@ -15,3 +15,15 @@
   tags:
   - toolset
   - packages
+
+- name: pacman | install workstation toolset
+  become: True
+  pacman:
+    pkg: "{{ item }}"
+    state: installed
+  with_items:
+  - xclip
+  when: "usage is defined and 'working' in usage"
+  tags:
+  - toolset
+  - packages
