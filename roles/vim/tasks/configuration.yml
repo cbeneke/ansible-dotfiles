@@ -64,7 +64,7 @@
   - vim
   - config
 
-- name: template | install vimrc
+- name: template | install vimrcs
   template:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
@@ -73,7 +73,15 @@
     dest: "{{ vim_vimrc }}"
   - src: vimpagerrc.j2
     dest: "{{ vim_vimpagerrc }}"
+  tags:
+  - vim
+  - config
 
+- name: file | link vim config dir for compability
+  file:
+    dest: "{{ ansible_user_dir }}/.vim"
+    src: "{{ vim_config_dir }}"
+    state: link
   tags:
   - vim
   - config
