@@ -19,17 +19,21 @@ set ai                     " Always set auto-indenting on
 set history=50             " keep 50 lines of command history
 set ruler                  " Show the cursor position all the time
 set laststatus=2           " show statusline (with filename)
+set clipboard+=unnamedplus " enable clipboard
+set mouse=""               " disable mouse
+{% if item.type is defined and item.type == 'interactive' %}
 set number                 " Show linenumbers on curser position
 set numberwidth=4          " Use 4 Character width for numbers
 set relativenumber         " Show relative linenumbers
 set colorcolumn=80         " Highlight 80th linenumber
 set showtabline=1          " show the tabline when multiple tabs are open
-set clipboard+=unnamedplus " enable clipboard
-set mouse=""               " disable mouse
+{% endif %}
 
+{% if item.type is defined and item.type == 'interactive' %}
 " Highlight trailing whitespace and tabs
 set list listchars=tab:>.,trail:.,extends:#,nbsp:.
 
+{% endif %}
 " Use <C-l> to clear the highlighting of :set hlsearch.
 if maparg('<C-l>', 'n') ==# ''
   nnoremap <silent> <C-l> :nohlsearch<CR><C-l>
@@ -38,24 +42,29 @@ endif
 " ----------------------------------------------------------------------------
 " Formatting
 " ----------------------------------------------------------------------------
-set modeline            " enable modeline
-set modelines=5
 set nocompatible        " Use Vim defaults (over Vi defaults)
 set fo=tcq              " turn off auto adding comments on next line
+{% if item.type is defined and item.type == 'interactive' %}
+set modeline            " enable modeline
+set modelines=5
+{% endif %}
 
 " Ensure UTF-8 Encoding
 set encoding=utf-8
 set fileencoding=utf-8
 
 " Handle indentation
+set tabstop={{ vim_indentation }}
+set softtabstop={{ vim_indentation }}
+set shiftwidth={{ vim_indentation }}
+{% if item.type is defined and item.type == 'interactive' %}
 set textwidth=80
 set autoindent
 set smartindent
 set expandtab
-set tabstop={{ vim_indentation }}
-set softtabstop={{ vim_indentation }}
-set shiftwidth={{ vim_indentation }}
+{% endif %}
 
+{% if item.type is defined and item.type == 'interactive' %}
 "toggle paste and go in insert mode
 if maparg('<C-i>', 'n') ==# ''
   nnoremap <silent> <C-i> :set paste<CR>:startinsert<CR>
@@ -64,6 +73,7 @@ endif
 " Disable paste mode when leaving Insert mode
 au InsertLeave * set nopaste
 
+{% endif %}
 " ----------------------------------------------------------------------------
 " Colors
 " ----------------------------------------------------------------------------
@@ -105,6 +115,7 @@ au Filetype ruby      setlocal tw=80 ts=2 sw=2 sts=0
 au FileType tex       setlocal sw=2 ts=2 iskeyword+=: spell
 au FileType make      setlocal modelines=0 noexpandtab
 
+{% if item.type is defined and item.type == 'interactive' %}
 " ----------------------------------------------------------------------------
 " Syntastic / Linter
 " ----------------------------------------------------------------------------
@@ -123,18 +134,22 @@ autocmd Filetype yaml let g:syntastic_check_on_open = 1
 let g:syntastic_yaml_checkers = ['yamllint']
 let g:syntastic_yaml_yamllint_args = '-d "{extends: relaxed, rules:{ line-length: disable, empty-lines: disable, document-start: disable, trailing-spaces: enable, comments-indentation: disable, comments: disable, hyphens: {max-spaces-after: 1}, colons: {max-spaces-before: 0, max-spaces-after: 1}, truthy: disable, brackets: disable, indentation: {spaces: 2, indent-sequences: consistent} } }"'
 
+{% endif %}
 " ----------------------------------------------------------------------------
 " Other
 " ----------------------------------------------------------------------------
 
+{% if item.type is defined and item.type == 'pager' %}
+" Manpage support
+let $PAGER=''
+
+{% endif %}
+{% if item.type is defined and item.type == 'interactive' %}
 "save undo history to files for persistent even if vim was closed inbetween
 set undodir=~/.config/nvim/nvimundo
 set undofile
 set undolevels=1000 "maximum number of changes that can be undone
 set undoreload=1000 "maximum number lines to save for undo on a buffer reload
-
-" Manpage support
-let $PAGER=''
 
 " Jump to the last position when reopening a file
 if has("autocmd")
@@ -147,4 +162,5 @@ au BufRead,BufNewFile *.pp set filetype=puppet
 " au BufRead,BufNewFile *_spec.rb
   \ nmap <F8> :!rspec --color %<CR>
 
+{% endif %}
 " vim:set ft=vim et sw=2 sts=2

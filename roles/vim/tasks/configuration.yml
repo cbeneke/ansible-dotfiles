@@ -66,13 +66,13 @@
 
 - name: template | install vimrcs
   template:
-    src: "{{ item.src }}"
+    src: vimrc.j2
     dest: "{{ item.dest }}"
   with_items:
-  - src: vimrc.j2
-    dest: "{{ vim_vimrc }}"
-  - src: vimpagerrc.j2
-    dest: "{{ vim_vimpagerrc }}"
+  - dest: "{{ vim_vimrc }}"
+    type: interactive
+  - dest: "{{ vim_vimpagerrc }}"
+    type: pager
   tags:
   - vim
   - config
