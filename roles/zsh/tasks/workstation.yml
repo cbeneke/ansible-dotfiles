@@ -22,17 +22,23 @@
   - src: kubens
     dest: kns
 
-- name: file | disable kube-ps1 per default
+- name: file | disable kube-ps1 per default (1/2)
   file:
-    name: "{{ item.name }}"
-    state: "{{ item.state }}"
+    name: "{{ item }}"
+    state: directory
   with_items:
-  - name: "{{ ansible_user_dir }}/.kube"
-    state: directory
-  - name: "{{ ansible_user_dir }}/.kube/kube-ps1"
-    state: directory
-  - name: "{{ ansible_user_dir }}/.kube/kube-ps1/disabled"
-    state: touch
+  - "{{ ansible_user_dir }}/.kube"
+  - "{{ ansible_user_dir }}/.kube/kube-ps1"
+  when: zsh_default_disable_kube_ps1
+  tags:
+  - zsh
+  - config
+
+- name: copy | disable kube-ps1 per default (2/2)
+  copy:
+    dest: "{{ ansible_user_dir }}/.kube/kube-ps1/disabled"
+    content: |
+      # This file is managed by Ansible
   when: zsh_default_disable_kube_ps1
   tags:
   - zsh
