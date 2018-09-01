@@ -4,5 +4,8 @@
 - include_tasks: macos.yml
   when: ansible_distribution == 'MacOSX'
 
+- include_tasks: nixos.yml
+  when: ansible_distribution == 'NixOS'
+
 - include_tasks: workstation.yml
   when: "usage is defined and 'working' in usage"
