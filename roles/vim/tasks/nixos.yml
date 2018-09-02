@@ -1,1 +1,9 @@
+- name: nix | install vim
+  nix:
+    name: "{{ vim_package }}"
+    state: installed
+  tags:
+  - vim
+  - packages
+
 - include_tasks: configuration.yml

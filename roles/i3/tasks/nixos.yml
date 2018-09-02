@@ -1,1 +1,14 @@
+- name: nix | install i3
+  nix:
+    name: "{{ item }}"
+    state: installed
+  with_items:
+  - feh
+  - rofi
+  - i3
+  - i3lock
+  tags:
+  - i3
+  - packages
+
 - include_tasks: configuration.yml

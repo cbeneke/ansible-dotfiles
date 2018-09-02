@@ -1,7 +1,6 @@
-- name: pacman | install basic toolset
-  become: True
-  pacman:
-    pkg: "{{ item }}"
+- name: nix | install basic toolset
+  nix:
+    name: "{{ item }}"
     state: installed
   with_items:
   - htop
@@ -16,10 +15,9 @@
   - toolset
   - packages
 
-- name: pacman | install workstation toolset
-  become: True
-  pacman:
-    pkg: "{{ item }}"
+- name: nix | install workstation toolset
+  nix:
+    name: "{{ item }}"
     state: installed
   with_items:
   - xclip

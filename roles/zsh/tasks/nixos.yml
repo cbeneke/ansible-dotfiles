@@ -1,1 +1,12 @@
+- name: nix | install zsh and plugins
+  nix:
+    name: "{{ item }}"
+    state: installed
+  with_items:
+  - zsh
+  - zsh-completions
+  tags:
+  - zsh
+  - packages
+
 - include_tasks: configuration.yml

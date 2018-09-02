@@ -1,1 +1,9 @@
+- name: nix | install go
+  nix:
+    name: go
+    state: installed
+  tags:
+  - golang
+  - packages
+
 - include_tasks: configuration.yml

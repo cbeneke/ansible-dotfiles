@@ -1,1 +1,11 @@
+- name: nix | install tmux
+  nix:
+    name: "{{ item }}"
+    state: installed
+  with_items:
+  - tmux
+  tags:
+  - tmux
+  - packages
+
 - include_tasks: configuration.yml

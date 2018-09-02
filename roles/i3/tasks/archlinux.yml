@@ -5,6 +5,7 @@
     state: installed
   with_items:
   - feh
+  - rofi
   - i3-gaps
   - i3lock
   tags:

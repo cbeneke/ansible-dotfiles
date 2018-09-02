@@ -1,0 +1,14 @@
+# {{ ansible_managed }}
+
+{ config, pkgs, ... }:
+
+{
+  {{ role_path | basename }}-ansible-packages = [
+{% for package in packages %}
+    {{ package }};
+{% endfor %}
+  ];
+
+  ansible-packages = ansible-packages
+    ++ {{ role_path | basename }}-ansible-packages;
+}

@@ -1,1 +1,11 @@
+- name: nix | install packages
+  nix:
+    name: "{{ item }}"
+    state: present
+  with_items:
+  - git
+  tags:
+  - git
+  - packages
+
 - include_tasks: configuration.yml
