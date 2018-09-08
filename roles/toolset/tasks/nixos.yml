@@ -1,7 +1,7 @@
 - name: nix | install basic toolset
   nix:
     name: "{{ item }}"
-    state: installed
+    state: present
   with_items:
   - htop
   - lm_sensors
@@ -18,7 +18,7 @@
 - name: nix | install workstation toolset
   nix:
     name: "{{ item }}"
-    state: installed
+    state: present
   with_items:
   - xclip
   when: "usage is defined and 'working' in usage"

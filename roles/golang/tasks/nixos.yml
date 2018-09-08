@@ -1,7 +1,7 @@
 - name: nix | install go
   nix:
     name: go
-    state: installed
+    state: present
   tags:
   - golang
   - packages

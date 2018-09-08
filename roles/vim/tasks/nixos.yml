@@ -1,7 +1,7 @@
 - name: nix | install vim
   nix:
     name: "{{ vim_package }}"
-    state: installed
+    state: present
   tags:
   - vim
   - packages

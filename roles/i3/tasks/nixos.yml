@@ -1,7 +1,7 @@
 - name: nix | install i3
   nix:
     name: "{{ item }}"
-    state: installed
+    state: present
   with_items:
   - feh
   - rofi

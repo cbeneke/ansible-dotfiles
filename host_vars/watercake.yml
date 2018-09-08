@@ -1,3 +1,5 @@
+ansible_python_interpreter: /usr/bin/env python
+
 usage:
 - working
 - desktop
