@@ -1,0 +1,22 @@
+- name: file | ensure environment directories
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+  - "{{ env_dir }}"
+  - "{{ env_dir }}/nixpkgs"
+  tags:
+  - environment
+
+- name: file | link nixpkgs into environment
+  file:
+    src: "{{ env_dir }}/nixpkgs"
+    dest: "{{ ansible_user_dir }}/.nixpkgs"
+    state: link
+  tags:
+  - environment
+
+- name: template | ensure user env config
+  template:
+    src: nixos-config.nix.j2
+    dest: "{{ env_dir }}/nixpkgs/config.nix"
