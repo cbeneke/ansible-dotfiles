@@ -9,7 +9,7 @@ hascmd() {
 }
 
 prompt_spacer() {
-    if [ -n "$__CURRENT_GIT_STATUS" ] && [ "$KUBE_PS1_ENABLED" = 'on' ]; then
+    if [ -n "$__CURRENT_GIT_STATUS" ] && [ ! "$KUBE_PS1_ENABLED" = 'off' ]; then
         echo ' | '
     fi
 }
