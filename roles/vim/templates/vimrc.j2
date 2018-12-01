@@ -8,25 +8,25 @@ filetype plugin indent on
 " ----------------------------------------------------------------------------
 " UI (-ish)
 " ----------------------------------------------------------------------------
-set showcmd                " Show (partial) command in status line.
-set showmatch              " Show matching brackets.
-set ignorecase             " Do case insensitive matching
-set smartcase              " Do smart case matching
-set incsearch              " Incremental search
-set autowrite              " Automatically save before commands like :next and :make
-set bs=2                   " Allow backspacing over everything in insert mode
-set ai                     " Always set auto-indenting on
-set history=50             " keep 50 lines of command history
-set ruler                  " Show the cursor position all the time
-set laststatus=2           " show statusline (with filename)
-set clipboard+=unnamedplus " enable clipboard
-set mouse=""               " disable mouse
+set showcmd                 " Show (partial) command in status line.
+set showmatch               " Show matching brackets.
+set ignorecase              " Do case insensitive matching
+set smartcase               " Do smart case matching
+set incsearch               " Incremental search
+set autowrite               " Automatically save before commands like :next and :make
+set bs=2                    " Allow backspacing over everything in insert mode
+set ai                      " Always set auto-indenting on
+set history=50              " Keep 50 lines of command history
+set ruler                   " Show the cursor position all the time
+set laststatus=2            " Show statusline (with filename)
+set clipboard+=unnamedplus  " Enable clipboard
+set mouse=r                 " Enable middle-click for mouse but disable navigation
 {% if item.type is defined and item.type == 'interactive' %}
-set number                 " Show linenumbers on curser position
-set numberwidth=4          " Use 4 Character width for numbers
-set relativenumber         " Show relative linenumbers
-set colorcolumn=80         " Highlight 80th linenumber
-set showtabline=1          " show the tabline when multiple tabs are open
+set number                  " Show linenumbers on curser position
+set numberwidth=4           " Use 4 Character width for numbers
+set relativenumber          " Show relative linenumbers
+set colorcolumn=80          " Highlight 80th linenumber
+set showtabline=1           " Show the tabline when multiple tabs are open
 {% endif %}
 
 {% if item.type is defined and item.type == 'interactive' %}
@@ -42,10 +42,10 @@ endif
 " ----------------------------------------------------------------------------
 " Formatting
 " ----------------------------------------------------------------------------
-set nocompatible        " Use Vim defaults (over Vi defaults)
-set fo=tcq              " turn off auto adding comments on next line
+set nocompatible  " Use Vim defaults (over Vi defaults)
+set fo=tcq        " turn off auto adding comments on next line
 {% if item.type is defined and item.type == 'interactive' %}
-set modeline            " enable modeline
+set modeline      " enable modeline
 set modelines=5
 {% endif %}
 
@@ -140,24 +140,26 @@ let g:syntastic_yaml_yamllint_args = '-d "{extends: relaxed, rules:{ line-length
 " ----------------------------------------------------------------------------
 
 {% if item.type is defined and item.type == 'pager' %}
-" Manpage support
-let $PAGER=''
+let $PAGER='' " Manpage support
 
 {% endif %}
 {% if item.type is defined and item.type == 'interactive' %}
-"save undo history to files for persistent even if vim was closed inbetween
+" Save undo history to files for persistent even if vim was closed inbetween
 set undodir=~/.config/nvim/nvimundo
 set undofile
-set undolevels=1000 "maximum number of changes that can be undone
-set undoreload=1000 "maximum number lines to save for undo on a buffer reload
+set undolevels=1000 " Maximum number of changes that can be undone
+set undoreload=1000 " Maximum number lines to save for undo on a buffer reload
 
 " Jump to the last position when reopening a file
 if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
 " Set up puppet manifest and spec options
-au BufRead,BufNewFile *.pp set filetype=puppet
+autocmd BufRead,BufNewFile *.pp set filetype=puppet
+
+" Remove trailing whitespaces on save
+autocmd BufWritePre * if &ft!~?'markdown' | %s/\s\+$//e
 
 " au BufRead,BufNewFile *_spec.rb
   \ nmap <F8> :!rspec --color %<CR>
