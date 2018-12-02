@@ -1,26 +1,24 @@
 - name: nix | install basic toolset
   nix:
-    name: "{{ item }}"
+    name:
+    - htop
+    - lm_sensors
+    - lshw
+    - nmap
+    - python
+    - python2
+    - unzip
+    - zip
     state: present
-  with_items:
-  - htop
-  - lm_sensors
-  - lshw
-  - nmap
-  - python
-  - python2
-  - unzip
-  - zip
   tags:
   - toolset
   - packages
 
 - name: nix | install workstation toolset
   nix:
-    name: "{{ item }}"
+    name:
+    - xclip
     state: present
-  with_items:
-  - xclip
   when: "usage is defined and 'working' in usage"
   tags:
   - toolset

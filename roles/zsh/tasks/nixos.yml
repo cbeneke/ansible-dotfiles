@@ -1,10 +1,9 @@
 - name: nix | install zsh and plugins
   nix:
-    name: "{{ item }}"
+    name:
+    - zsh
+    - zsh-completions
     state: present
-  with_items:
-  - zsh
-  - zsh-completions
   tags:
   - zsh
   - packages

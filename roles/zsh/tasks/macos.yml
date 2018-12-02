@@ -1,19 +1,17 @@
 - name: homebrew | install zsh and plugins
   homebrew:
-    pkg: "{{ item }}"
+    pkg:
+    - zsh
+    - zsh-completions
     state: installed
-  with_items:
-  - zsh
-  - zsh-completions
   tags:
   - zsh
   - packages
 
 - name: pip | install python plugins
   pip:
-    name: "{{ item }}"
+    name:
+    - virtualenvwrapper
     state: present
-  with_items:
-  - virtualenvwrapper
 
 - include_tasks: configuration.yml

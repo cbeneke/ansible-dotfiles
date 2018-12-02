@@ -1,7 +1,8 @@
 - name: pacman | install go
   become: True
   pacman:
-    pkg: go
+    pkg:
+    - go
     state: installed
   tags:
   - golang

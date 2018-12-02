@@ -1,6 +1,7 @@
 - name: homebrew | install go
   homebrew:
-    pkg: go
+    pkg:
+    - go
     state: installed
   tags:
   - golang

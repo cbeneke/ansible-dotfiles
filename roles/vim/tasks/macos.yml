@@ -1,6 +1,7 @@
 - name: homebrew | install vim
   homebrew:
-    pkg: "{{ vim_package }}"
+    pkg:
+    - "{{ vim_package }}"
     state: installed
   tags:
   - vim

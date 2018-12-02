@@ -1,9 +1,8 @@
 - name: homebrew | install tmux
   homebrew:
-    pkg: "{{ item }}"
+    pkg:
+    - tmux
     state: installed
-  with_items:
-  - tmux
   tags:
   - tmux
   - packages

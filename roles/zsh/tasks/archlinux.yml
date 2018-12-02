@@ -1,12 +1,11 @@
 - name: pacman | install zsh and plugins
   become: True
   pacman:
-    pkg: "{{ item }}"
+    pkg:
+    - python-virtualenvwrapper
+    - zsh
+    - zsh-completions
     state: installed
-  with_items:
-  - python-virtualenvwrapper
-  - zsh
-  - zsh-completions
   tags:
   - zsh
   - packages

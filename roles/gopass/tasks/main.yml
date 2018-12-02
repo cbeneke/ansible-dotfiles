@@ -3,30 +3,30 @@
   environment:
     GOPATH: "{{ ansible_env.GOPATH }}"
   with_items:
-    - github.com/gopasspw/gopass
+  - github.com/gopasspw/gopass
   changed_when: false
   tags:
-    - gopass
+  - gopass
 
 - name: file | create config dir
   file:
     path: "{{ gopass_config_dir }}"
     state: directory
   tags:
-    - gopass
+  - gopass
 
 - name: template | configure gopass
   template:
     src: "{{ item }}.j2"
     dest: "{{ gopass_config_dir }}/{{ item }}"
   with_items:
-    - gopass_wrapper.sh
+  - gopass_wrapper.sh
   tags:
-    - gopass
+  - gopass
 
 - name: template | create gopass autocompletion
   template:
     src: completion.j2
     dest: "{{ env_dir }}/completion.d/_gopass"
   tags:
-    - gopass
+  - gopass

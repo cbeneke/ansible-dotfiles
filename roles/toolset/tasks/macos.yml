@@ -1,13 +1,12 @@
 - name: homebrew | install basic toolset
   homebrew:
-    pkg: "{{ item }}"
+    pkg:
+    - htop
+    - nmap
+    - python
+    - python@2
+    - pinentry-mac
     state: installed
-  with_items:
-  - htop
-  - nmap
-  - python
-  - python@2
-  - pinentry-mac
   tags:
   - toolset
   - packages

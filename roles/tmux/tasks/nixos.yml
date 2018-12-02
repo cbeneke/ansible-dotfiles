@@ -1,9 +1,8 @@
 - name: nix | install tmux
   nix:
-    name: "{{ item }}"
+    name:
+    - tmux
     state: present
-  with_items:
-  - tmux
   tags:
   - tmux
   - packages

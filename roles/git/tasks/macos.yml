@@ -1,9 +1,8 @@
 - name: homebrew | install git
   homebrew:
-    pkg: "{{ item }}"
+    pkg:
+    - git
     state: installed
-  with_items:
-  - git
   tags:
   - git
   - packages

@@ -1,17 +1,16 @@
 - name: pacman | install basic toolset
   become: True
   pacman:
-    pkg: "{{ item }}"
+    pkg:
+    - htop
+    - lm_sensors
+    - lshw
+    - nmap
+    - python
+    - python2
+    - unzip
+    - zip
     state: installed
-  with_items:
-  - htop
-  - lm_sensors
-  - lshw
-  - nmap
-  - python
-  - python2
-  - unzip
-  - zip
   tags:
   - toolset
   - packages
@@ -19,10 +18,9 @@
 - name: pacman | install workstation toolset
   become: True
   pacman:
-    pkg: "{{ item }}"
+    pkg:
+    - xclip
     state: installed
-  with_items:
-  - xclip
   when: "usage is defined and 'working' in usage"
   tags:
   - toolset

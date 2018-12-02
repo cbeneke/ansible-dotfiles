@@ -1,9 +1,8 @@
 - name: nix | install packages
   nix:
-    name: "{{ item }}"
+    name:
+    - git
     state: present
-  with_items:
-  - git
   tags:
   - git
   - packages
