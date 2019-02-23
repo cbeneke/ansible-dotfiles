@@ -1,0 +1,2 @@
+- include_tasks: configuration.yml
+  when: ansible_distribution == 'Archlinux'

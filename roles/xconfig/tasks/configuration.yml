@@ -1,0 +1,18 @@
+- name: template | install X config files
+  template:
+    src: "{{ item }}.j2"
+    dest: "{{ ansible_user_dir }}/.{{ item }}"
+  with_items:
+    - xinitrc
+    - Xdefaults
+  tags:
+  - X
+  - config
+
+- name: template | install Xmodmap
+  template:
+    src: Xmodmap.{{ keyboard_layout }}.j2
+    dest: "{{ ansible_user_dir }}/.Xmodmap"
+  tags:
+  - X
+  - config
