@@ -2,6 +2,7 @@
 
 # Setup symlink to current host and prepare environment
 - hosts: localhost
+  check_mode: no
   pre_tasks:
   - name: link hostname variables
     file:
