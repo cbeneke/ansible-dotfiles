@@ -30,3 +30,10 @@
     dest: "{{ env_dir }}/completion.d/_gopass"
   tags:
   - gopass
+
+- name: template | create ssh-add-all script
+  template:
+    src: ssh-add-all.j2
+    dest: "{{ env_dir }}/bin/ssh-add-all"
+  tags:
+  - gopass
