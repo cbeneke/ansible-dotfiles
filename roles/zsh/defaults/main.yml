@@ -1,2 +1,2 @@
-zsh_default_disable_kube_ps1: true
+zsh_default_disable_kube_ps1: false
 zsh_virtualenvsh: /usr/bin/virtualenvwrapper.sh
