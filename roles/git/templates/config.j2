@@ -11,3 +11,7 @@
   prune = true
 [rebase]
   autoStash = true
+{% if git_has_ghq %}
+[ghq]
+  root = {{ git_ghq_dir }}
+{% endif %}
