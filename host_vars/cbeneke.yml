@@ -7,3 +7,5 @@ zsh_virtualenvsh: /usr/local/bin/virtualenvwrapper.sh
 zsh_default_disable_kube_ps1: false
 vim_vimrc: "{{ vim_config_dir }}/sysinit.vim"
 git_email: 'c.beneke@syseleven.de'
+development_dir: "{{ ansible_user_dir }}/repos"
+golang_gopath: "{{ development_dir }}"
