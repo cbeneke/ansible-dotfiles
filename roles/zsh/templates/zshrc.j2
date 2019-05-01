@@ -27,6 +27,9 @@ export KUBE_PS1_SYMBOL_ENABLE=false
 export KUBE_PS1_PREFIX=''
 export KUBE_PS1_SUFFIX=''
 
+# Kubeconfig
+export KUBECONFIG="$(find ${HOME}/.kube/configs -type f -exec printf '%s:' '{}' +)${HOME}/.kube/config"
+
 {% endif %}
 # include zsh-git-prompt
 [ -z ${ZSH_GIT_SH} ] && export ZSH_GIT_SH="{{ env_dir }}/git/zsh-git-prompt/zshrc.sh"
