@@ -38,6 +38,8 @@
     repo: https://github.com/airblade/vim-gitgutter.git
   - name: sensible
     repo: https://github.com/tpope/vim-sensible.git
+  - name: indentline
+    repo: https://github.com/Yggdroot/indentLine
   tags:
   - vim
   - config
