@@ -29,7 +29,7 @@
   with_items:
   - "{{ ansible_user_dir }}/.kube"
   - "{{ ansible_user_dir }}/.kube/kube-ps1"
-  when: zsh_default_disable_kube_ps1
+  when: zsh_default_disable_kube_ps1 | bool
   tags:
   - zsh
   - config
@@ -39,7 +39,7 @@
     dest: "{{ ansible_user_dir }}/.kube/kube-ps1/disabled"
     content: |
       # This file is managed by Ansible
-  when: zsh_default_disable_kube_ps1
+  when: zsh_default_disable_kube_ps1 | bool
   tags:
   - zsh
   - config
