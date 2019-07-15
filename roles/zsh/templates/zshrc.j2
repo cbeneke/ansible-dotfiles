@@ -28,7 +28,10 @@ export KUBE_PS1_PREFIX=''
 export KUBE_PS1_SUFFIX=''
 
 # Kubeconfig
-export KUBECONFIG="$(find ${HOME}/.kube/configs -type f -exec printf '%s:' '{}' +)${HOME}/.kube/config"
+reload_kubeconfig() {
+    export KUBECONFIG="$(find ${HOME}/.kube/configs -type f -exec printf '%s:' '{}' +)${HOME}/.kube/config"
+}
+reload_kubeconfig
 
 {% endif %}
 # include zsh-git-prompt
