@@ -11,4 +11,4 @@ i3_wallpapers:
 
 git_email: 'c.beneke@wirelab.org'
 development_dir: "{{ ansible_user_dir }}/repos"
-golang_gopath: "{{ development_dir }}"
+golang_gopath: "{{ ansible_user_dir }}/go"

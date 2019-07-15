@@ -1,2 +1,2 @@
 git_has_ghq: true
-git_ghq_dir: "{{ development_dir }}/src"
+git_ghq_dir: "{{ development_dir }}"

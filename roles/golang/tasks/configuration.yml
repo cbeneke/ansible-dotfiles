@@ -4,7 +4,6 @@
     state: directory
   with_items:
   - "{{ golang_gopath }}"
-  - "{{ golang_gopath }}/src"
   tags:
   - golang
   - config
