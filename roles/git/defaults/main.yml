@@ -1,2 +1,4 @@
 git_has_ghq: true
-git_ghq_dir: "{{ development_dir }}"
+git_ghq_dirs:
+  - "{{ development_dir }}"
+  - "{{ golang_gopath }}/src"

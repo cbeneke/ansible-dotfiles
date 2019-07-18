@@ -13,7 +13,9 @@
   autoStash = true
 {% if git_has_ghq %}
 [ghq]
-  root = {{ git_ghq_dir }}
+{% for dir in git_ghq_dirs %}
+  root = {{ dir }}
+{% endfor %}
 {% endif %}
 [url "ssh://git@github.com/"]
   insteadOf = https://github.com/
