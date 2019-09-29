@@ -1,5 +1,5 @@
 env_dir: "{{ ansible_user_dir }}/.environment"
-development_dir: "{{ ansible_user_dir }}/development"
+development_dir: "{{ ansible_user_dir }}/repos"
 
 git_email: 'c.beneke@wirelab.org'
 git_username: 'Christian Beneke'

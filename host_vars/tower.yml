@@ -8,7 +8,3 @@ usage:
 i3_wallpapers:
 - phantom_assassin.jpg
 - drow_ranger.jpg
-
-git_email: 'c.beneke@wirelab.org'
-development_dir: "{{ ansible_user_dir }}/repos"
-golang_gopath: "{{ ansible_user_dir }}/go"
