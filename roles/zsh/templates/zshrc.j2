@@ -34,6 +34,38 @@ reload_kubeconfig() {
 reload_kubeconfig
 
 {% endif %}
+{% if git_has_ghq %}
+ghq () {
+    if [ "$1" = "look" -a -n "$2" ]; then
+        local repos=($(command ghq list -p "$2"))
+{%- raw %}
+        case ${#repos[@]} in
+{% endraw %}
+        0)
+            echo 'No repository found'
+            return 1
+            ;;
+        1)
+            cd "${repos[1]}"
+            return
+            ;;
+        *)
+            local PS3="Select repository: "
+            select reponame in ${repos[@]}; do
+                cd "${reponame}"
+                return
+            done
+            ;;
+        esac
+    elif [ "$1" = "get" -a -n "$2" ]; then
+        command ghq "$@"
+        cd $(command ghq list -e -p "$2")
+        return
+    fi
+    command ghq "$@"
+}
+
+{% endif %}
 # include zsh-git-prompt
 [ -z ${ZSH_GIT_SH} ] && export ZSH_GIT_SH="{{ env_dir }}/git/zsh-git-prompt/zshrc.sh"
 if [ -f ${ZSH_GIT_SH} ]; then
