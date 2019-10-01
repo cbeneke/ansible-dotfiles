@@ -1,7 +1,7 @@
 - name: shell | install gopass
   shell: go get -u {{ item }}
   environment:
-    GOPATH: "{{ ansible_env.GOPATH }}"
+    GOPATH: "{{ golang_gopath }}"
   with_items:
   - github.com/gopasspw/gopass
   changed_when: false
