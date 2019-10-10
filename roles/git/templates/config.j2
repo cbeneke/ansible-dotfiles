@@ -11,6 +11,8 @@
   prune = true
 [rebase]
   autoStash = true
+[diff]
+  noPrefix = true
 {% if git_has_ghq %}
 [ghq]
 {% for dir in git_ghq_dirs %}
