@@ -8,7 +8,7 @@ COLOR_RESET='\033[0;0m'
 
 for file in $(find {{ gopass_ssh_add_keys_path }} -type f -name '*.pub'); do
   privkey="${file%".pub"}"
-  relative="${privkey#"{{ gopass_ssh_add_keys_path }}"}"
+  relative="${privkey#"{{ gopass_ssh_add_keys_path }}/"}"
   if [[ ! -f ${privkey} ]]; then
     printf "${COLOR_RED}Privatekey for '${file}' not found. Skipping...${COLOR_RESET}\n"
     continue

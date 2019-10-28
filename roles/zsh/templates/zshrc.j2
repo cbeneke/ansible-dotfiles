@@ -14,9 +14,20 @@ prompt_spacer() {
     fi
 }
 
+aws_profile_status() {
+    if [ -n "$AWS_PROFILE" ] && [ ! "$KUBE_PS1_ENABLED" = 'off' ]; then
+        echo "${AWS_PROFILE} | "
+    fi
+}
+
 ################################################################################
 # environment for external tools
 ################################################################################
+
+{% if zsh_override_lang %}
+# Language
+export LC_ALL={{ zsh_override_lang }}
+{% endif %}
 
 export fpath=({{ env_dir }}/completion.d $fpath)
 
@@ -26,6 +37,22 @@ source "{{ env_dir }}/git/kube-ps1/kube-ps1.sh"
 export KUBE_PS1_SYMBOL_ENABLE=false
 export KUBE_PS1_PREFIX=''
 export KUBE_PS1_SUFFIX=''
+
+# AWS profile
+ap() {
+    if [ -z "$1" ]; then
+        echo 'No profile defined'
+        return 1
+    fi
+
+    grep -q "^\[profile $1\]$" ${HOME}/.aws/config
+    if [ ! $? -eq 0 ]; then
+        echo "Profile '$1' not found"
+        return 1
+    fi
+
+    export AWS_PROFILE="$1"
+}
 
 # Kubeconfig
 reload_kubeconfig() {
@@ -184,7 +211,7 @@ setopt correct              # try to correct typos
 {% raw %}
 PS1='%{%B%F{white}%}%D{%H:%M}%b %(!.%B%F{red}.%F{green})%B%n [%m]%b %{%B%F{white}%}%B%d%b
 %(?..%B%F{red}%?%b%f )%(!.#.$) '
-RPS1='$(git_super_status)$(prompt_spacer)$(kube_ps1)'
+RPS1='$(git_super_status)$(prompt_spacer)$(aws_profile_status)$(kube_ps1)'
 {% endraw %}
 
 # printed when waiting for more input

@@ -1,2 +1,3 @@
 zsh_default_disable_kube_ps1: false
 zsh_virtualenvsh: /usr/bin/virtualenvwrapper.sh
+zsh_override_lang: ''
