@@ -3,12 +3,11 @@
 usage:
 - working
 
-host_vars_name: MacBook-Pro
-zsh_virtualenvsh: /usr/local/bin/virtualenvwrapper.sh
+host_vars_name: MacBook-Air
 zsh_override_lang: 'en_US.UTF-8'
+zsh_virtualenvsh: /usr/local/bin/virtualenvwrapper.sh
 vim_vimrc: "{{ vim_config_dir }}/sysinit.vim"
 git_email: 'christian.beneke@traderepublic.com'
 development_dir: "{{ ansible_user_dir }}/repos"
 golang_gopath: "{{ ansible_user_dir }}/go"
-gopass_ssh_add_store: work/
-gopass_ssh_add_hostname: macbook-dev
+gopass_ssh_add_hostname: macbook-prod
