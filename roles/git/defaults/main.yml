@@ -1,3 +1,7 @@
+# If not overwritten use variable from golang package
+# TODO Do not double declare
+golang_gopath: "{{ ansible_user_dir }}/go"
+
 git_has_ghq: true
 git_ghq_dirs:
   - "{{ development_dir }}"
