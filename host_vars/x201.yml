@@ -3,3 +3,8 @@
 usage:
 - desktop
 - working
+
+i3_wallpapers:
+- arch.jpg
+
+gopass_ssh_add_hostname: tower
