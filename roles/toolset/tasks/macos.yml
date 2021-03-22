@@ -4,7 +4,6 @@
     - htop
     - nmap
     - python
-    - python@2
     - pinentry-mac
     state: installed
   tags:
