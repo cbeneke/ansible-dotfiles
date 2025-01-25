@@ -1,5 +1,6 @@
 - name: homebrew | install tmux
   homebrew:
+    path: "{{ ansible_user_dir }}/.brew/bin"
     pkg:
     - tmux
     state: installed

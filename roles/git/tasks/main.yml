@@ -3,6 +3,3 @@
 
 - include_tasks: macos.yml
   when: ansible_distribution == 'MacOSX'
-
-- include_tasks: nixos.yml
-  when: ansible_distribution == 'NixOS'

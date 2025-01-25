@@ -1,10 +1,25 @@
+- name: homebrew | install brew
+  git:
+    repo: 'https://github.com/Homebrew/brew.git'
+    dest: "{{ ansible_user_dir }}/.brew"
+  tags:
+  - toolset
+  - packages
+
+- name: template | ensure brew env variables
+  template:
+    src: environment.j2
+    dest: "{{ env_dir }}/profile.d/brew.sh"
+
 - name: homebrew | install basic toolset
   homebrew:
+    path: "{{ ansible_user_dir }}/.brew/bin"
     pkg:
     - htop
     - nmap
     - python
     - pinentry-mac
+    - kubectl
     state: installed
   tags:
   - toolset

@@ -1,5 +1,0 @@
-gopass_config_dir: "{{ ansible_user_dir }}/.config/gopass"
-
-gopass_ssh_add_store: ''
-gopass_ssh_add_hostname: "{{ ansible_hostname }}"
-gopass_ssh_add_keys_path: "{{ ansible_user_dir}}/.ssh"

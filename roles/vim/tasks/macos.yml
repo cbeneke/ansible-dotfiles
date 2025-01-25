@@ -1,5 +1,6 @@
 - name: homebrew | install vim
   homebrew:
+    path: "{{ ansible_user_dir }}/.brew/bin"
     pkg:
     - "{{ vim_package }}"
     state: installed

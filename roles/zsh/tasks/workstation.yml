@@ -50,7 +50,8 @@
     dest: "{{ env_dir }}/completion.d/{{ item.dest }}"
     state: link
   with_items:
-    - src: kubectx.zsh
+    - src: _kubectx.zsh
       dest: _kctx
-    - src: kubens.zsh
+    - src: _kubens.zsh
       dest: _kns
+

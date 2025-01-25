@@ -1,5 +1,6 @@
 - name: homebrew | install zsh and plugins
   homebrew:
+    path: ${HOME}/.brew/bin
     pkg:
     - zsh
     - zsh-completions

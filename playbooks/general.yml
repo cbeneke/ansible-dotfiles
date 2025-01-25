@@ -1,4 +1,4 @@
-# General palybook, executed on all machine types
+# General playbook, executed on all machine types
 
 - hosts: localhost
   roles:

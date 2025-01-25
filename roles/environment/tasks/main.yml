@@ -1,4 +1,1 @@
 - include_tasks: configuration.yml
-
-- include_tasks: nixos.yml
-  when: ansible_distribution == 'NixOS'
